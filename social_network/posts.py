@@ -25,9 +25,8 @@ class TextPost(Post):  # Inherit properly
 
 class PicturePost(Post):  # Inherit properly
     def __init__(self, text, image_url, timestamp=None):
-        self.text = text
+        super(PicturePost, self).__init__(text, timestamp)
         self.image_url = image_url
-        self.timestamp = timestamp
         self.readable_date = self.timestamp.strftime('%A, %b %d, %Y')
 
     def __str__(self):
@@ -38,11 +37,10 @@ class PicturePost(Post):  # Inherit properly
 
 class CheckInPost(Post):  # Inherit properly
     def __init__(self, text, latitude, longitude, timestamp=None):
-        self.text = text
+        super(CheckInPost, self).__init__(text, timestamp)
         self.latitude = latitude
         self.longitude = longitude
         self.coords = str(self.latitude) + ', ' + str(self.longitude)
-        self.timestamp = timestamp
         self.readable_date = self.timestamp.strftime('%A, %b %d, %Y')
 
     def __str__(self):
